@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import BottomSheet
 
 enum BottomSheetPosition: CGFloat, CaseIterable {
     case top = 0.83 /// 702/844
@@ -15,6 +14,13 @@ enum BottomSheetPosition: CGFloat, CaseIterable {
 
 struct HomeView: View {
     @State var bottomSheetPosition: BottomSheetPosition = .middle
+    @State var bottomSheetTranslation: CGFloat = BottomSheetPosition.middle.rawValue
+    var bottomSheetTranslationProrated: CGFloat {
+        (bottomSheetTranslation - BottomSheetPosition.middle.rawValue) /
+        (BottomSheetPosition.top.rawValue - BottomSheetPosition.middle.rawValue)
+    }
+    @State var imageOffset: CGFloat = 0
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -24,10 +30,12 @@ struct HomeView: View {
                 Image("img_background")
                     .resizable()
                     .ignoresSafeArea()
+                    .offset(y: bottomSheetTranslationProrated < 0 ? 0 * imageOffset : bottomSheetTranslationProrated > 1 ? -1 * imageOffset : -bottomSheetTranslationProrated * imageOffset)
                 // MARK: House Image
                 Image("img_house")
                     .frame(maxHeight: .infinity, alignment: .top)
                     .padding(.top, 256)
+                    .offset(y: bottomSheetTranslationProrated < 0 ? 0 * imageOffset : bottomSheetTranslationProrated > 1 ? -1 * imageOffset : -bottomSheetTranslationProrated * imageOffset)
                 VStack(spacing: -8) {
                     Text("Montreal")
                         .font(.largeTitle)
@@ -38,22 +46,23 @@ struct HomeView: View {
                     }
                     Spacer()
                 }
-                .padding(.top, 48)
-                
+                    .padding(.top, 48)
+
                 // MARK: Bottom Sheet
                 BottomSheetView(position: $bottomSheetPosition) {
-//                    Text(bottomSheetPosition.rawValue.formatted())
+                    Text(bottomSheetPosition.rawValue.formatted())
                 } content: {
                     ForecastView()
                 }
 
-                
+
                 // MARK: Tab Bar
                 TabBar(action: {
                     bottomSheetPosition = .top
                 })
+                    .offset(y: bottomSheetTranslationProrated < 0 ? 0 * 115 : bottomSheetTranslationProrated > 1 ? 1 * 115 : bottomSheetTranslationProrated * 115)
             }
-            .navigationBarHidden(true)
+                .navigationBarHidden(true)
         }
     }
 
@@ -78,7 +87,6 @@ struct HomeView: View {
     }
 }
 
-@available(iOS 15.0, *)
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()

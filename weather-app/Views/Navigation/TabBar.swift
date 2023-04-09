@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(iOS 15.0, *)
 struct TabBar: View {
     var action: () -> Void
     var body: some View {
@@ -31,7 +30,7 @@ struct TabBar: View {
                 Spacer()
                 // MARK: Navigation Button
                 NavigationLink {
-                    
+                    WeatherView()
                 } label: {
                     Image(systemName: "list.star")
                         .frame(width: 44, height: 44)
@@ -46,7 +45,6 @@ struct TabBar: View {
     }
 }
 
-@available(iOS 15.0, *)
 struct TabBar_Previews: PreviewProvider {
     static var previews: some View {
         TabBar(action: { })

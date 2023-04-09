@@ -4,67 +4,23 @@ PODS:
     - Moya/Core (= 15.0.0)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
-  - PINCache (3.0.3):
-    - PINCache/Arc-exception-safe (= 3.0.3)
-    - PINCache/Core (= 3.0.3)
-  - PINCache/Arc-exception-safe (3.0.3):
-    - PINCache/Core
-  - PINCache/Core (3.0.3):
-    - PINOperation (~> 1.2.1)
-  - PINOperation (1.2.2)
-  - PINRemoteImage/Core (3.0.3):
-    - PINOperation
-  - PINRemoteImage/iOS (3.0.3):
-    - PINRemoteImage/Core
-  - PINRemoteImage/PINCache (3.0.3):
-    - PINCache (~> 3.0.3)
-    - PINRemoteImage/Core
   - ReSwift (5.0.0)
-  - Texture (3.0.0):
-    - Texture/AssetsLibrary (= 3.0.0)
-    - Texture/Core (= 3.0.0)
-    - Texture/MapKit (= 3.0.0)
-    - Texture/Photos (= 3.0.0)
-    - Texture/PINRemoteImage (= 3.0.0)
-    - Texture/Video (= 3.0.0)
-  - Texture/AssetsLibrary (3.0.0):
-    - Texture/Core
-  - Texture/Core (3.0.0)
-  - Texture/MapKit (3.0.0):
-    - Texture/Core
-  - Texture/Photos (3.0.0):
-    - Texture/Core
-  - Texture/PINRemoteImage (3.0.0):
-    - PINRemoteImage/iOS (~> 3.0.0)
-    - PINRemoteImage/PINCache
-    - Texture/Core
-  - Texture/Video (3.0.0):
-    - Texture/Core
 
 DEPENDENCIES:
   - Moya (~> 15.0.0)
   - ReSwift (~> 5.0.0)
-  - Texture (~> 3.0.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Moya
-    - PINCache
-    - PINOperation
-    - PINRemoteImage
     - ReSwift
-    - Texture
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
-  PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
-  PINOperation: daa34d4aa1d8449089be7d405b9d974abc4724c6
-  PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   ReSwift: 628f1a9b3ee52e3b3ca2a644435472fd77afafe1
-  Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
 
-PODFILE CHECKSUM: c6536a75223185fdb0b5db0cc9aaa0fa17524bf1
+PODFILE CHECKSUM: 6ccb903c1c4466e8cb4dfb035a2122ecdecb47db
 
 COCOAPODS: 1.11.3

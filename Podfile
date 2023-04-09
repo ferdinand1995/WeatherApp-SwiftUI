@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '13.6'
+platform :ios, '15.0'
 inhibit_all_warnings!
 
 target 'weather-app' do
@@ -7,6 +7,6 @@ target 'weather-app' do
   use_frameworks!
   pod 'Moya', '~> 15.0.0'
   pod 'ReSwift', '~> 5.0.0'
-  pod "Texture", '~> 3.0.0'
+#  pod "Texture", '~> 3.0.0'
   
 end
