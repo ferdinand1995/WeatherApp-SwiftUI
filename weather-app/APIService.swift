@@ -13,7 +13,7 @@ enum APIService {
 
 // MARK: - TargetType Protocol Implementation
 extension APIService: TargetType {
-    var baseURL: URL { URL(string: "https://api.open-meteo.com")! }
+    var baseURL: URL { URL(string: "http://api.weatherstack.com")! }
     var path: String {
         switch self {
         case .forecastAndCurrent(_, _):

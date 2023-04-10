@@ -10,11 +10,14 @@ import SwiftUI
 struct WeatherView: View {
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+    @ObservedObject var viewModel: WeatherViewModel
+
     @State private var searchText = ""
     init() {
         /// tableview background
-        UITableView.appearance().backgroundColor = .clear
+        UITableView.appearance().backgroundColor = .black
+        UITableView.appearance().separatorStyle = .none
+        viewModel = WeatherViewModel()
     }
 
     var body: some View {
@@ -26,14 +29,18 @@ struct WeatherView: View {
                     self.presentationMode.wrappedValue.dismiss()
                 }, navigationTitle: "Weather")
                 SearchField(searchText: $searchText)
-                List {
-                    Text("Settings")
-                }
-                    .listStyle(.plain)
+                ListView()
             }
-        }.overlay(content: {
-            
-        }).navigationBarHidden(true)
+        }.navigationBarHidden(true)
+    }
+
+    func ListView() -> some View {
+        return List(viewModel.countries) { country in
+            WeatherCell(viewModel: WeatherCellViewModel(country)).listRowSeparator(.hidden)
+                .listRowBackground(Color.clear)
+        }.task {
+            viewModel.loadCountriesTest()
+        }.listStyle(.plain)
     }
 }
 
