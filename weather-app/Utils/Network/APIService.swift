@@ -8,7 +8,7 @@
 import Moya
 
 enum APIService {
-    case forecastAndCurrent(latitude: String, longitude: String)
+    case currentWeather(city: String)
 }
 
 // MARK: - TargetType Protocol Implementation
@@ -16,26 +16,24 @@ extension APIService: TargetType {
     var baseURL: URL { URL(string: "http://api.weatherstack.com")! }
     var path: String {
         switch self {
-        case .forecastAndCurrent(_, _):
-            return "/v1/forecast"
+        case .currentWeather(_):
+            return "/current"
         }
     }
-    
+
     var method: Moya.Method {
         switch self {
-        case .forecastAndCurrent:
+        case .currentWeather:
             return .get
         }
     }
-    
+
     var task: Task {
         switch self {
-        case let .forecastAndCurrent(latitude, longitude):
+        case let .currentWeather(city):
             return .requestParameters(parameters: [
-                "latitude": latitude,
-                "longitude": longitude,
-                "current_weather": "true",
-                "hourly": "temperature_2m,relativehumidity_2m,windspeed_10m"
+                "access_key": "bd4fab97f34e93e4b58b6721098c6752",
+                "query": city
             ], encoding: URLEncoding.queryString)
         }
     }
